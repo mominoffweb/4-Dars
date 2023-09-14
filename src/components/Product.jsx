@@ -5,7 +5,6 @@ import { MdDelete } from "react-icons/Md";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/Ai";
 function Product({ name, price, image, amount }) {
   const dispatch = useDispatch();
-  // const { amount } = useSelector((state) => state.basket);
 
   return (
     <>
@@ -17,19 +16,28 @@ function Product({ name, price, image, amount }) {
             <p className="font-medium">${price}</p>
             <button
               onClick={() => dispatch(remove(name))}
-              className="text-red-500 tracking-wider hover:text-red-900">  
+              className="text-red-500 tracking-wider hover:text-red-900"
+            >
               <MdDelete className="text-2xl" />
             </button>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-   <button onClick={() => { dispatch(decrement(name)); }}  > <AiFillLeftCircle className="text-3xl" />
+          <button
+            onClick={() => {
+              if (amount == 1) {
+                dispatch(remove(name));
+                return;
+              } else dispatch(decrement(name));
+            }}
+          >
+            <AiFillLeftCircle className="text-3xl" />
           </button>
 
           <p>{amount}</p>
 
-          <button onClick={() => {   dispatch(increment(name));  }} >
+          <button onClick={() => dispatch(increment(name))}>
             <AiFillRightCircle className="text-3xl" />
           </button>
         </div>
