@@ -16,7 +16,7 @@ function App() {
   return (
     <div className=" max-w-screen-lg mx-auto px-3">
       <Navbar />
-      <h1 className="text-center mt-5 py-3 text-5xl">Redux Store</h1>
+      <h1 className="text-center mt-5 py-3 text-5xl">Glasses shop</h1>
       <BasketProducts />
     </div>
   );
